@@ -2,543 +2,1396 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Derecho Cambiario Paraguayo - Guía Interactiva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Guía interactiva del Derecho Cambiario Paraguayo - Código Civil">
+    <meta name="author" content="Educational Resource">
+    <meta property="og:title" content="Derecho Cambiario Paraguayo">
+    <meta property="og:description" content="Guía interactiva del Código Civil Paraguayo - Libro 3 de los Contratos">
+    <title>Derecho Cambiario Paraguayo - Guía Interactiva Completa</title>
+    
     <style>
         :root {
-            --primary-color: #1a3a6c;
-            --secondary-color: #8e443d;
-            --accent-color: #e9b44a;
-            --light-color: #f5f5f5;
-            --dark-color: #333;
-            --success-color: #4caf50;
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary-color: #dc2626;
+            --accent-color: #f59e0b;
+            --success-color: #16a34a;
+            --error-color: #dc2626;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f3f4f6;
+            --bg-tertiary: #e5e7eb;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --border-color: #d1d5db;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius: 0.5rem;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #f9f9f9;
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        
+
+        /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary-color), #2c5282);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
             color: white;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1.5rem 1rem;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        
-        .logo-container {
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
+            gap: 1rem;
         }
-        
+
         .logo {
             font-size: 2.5rem;
-            margin-right: 1rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
-        
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
+
+        .header-text h1 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
         }
-        
+
         .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: clamp(0.875rem, 2vw, 1.125rem);
+            opacity: 0.95;
         }
-        
-        .container {
-            display: flex;
-            max-width: 1200px;
+
+        /* Main Container */
+        .main-container {
+            flex: 1;
+            max-width: 1280px;
+            width: 100%;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 1.5rem 1rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 1.5rem;
         }
-        
+
+        /* Sidebar */
         .sidebar {
-            width: 280px;
-            background: white;
-            border-radius: 8px;
+            background: var(--bg-primary);
+            border-radius: var(--radius);
             padding: 1.5rem;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            margin-right: 1.5rem;
+            box-shadow: var(--shadow-md);
             height: fit-content;
+            position: sticky;
+            top: 100px;
         }
-        
+
+        .mobile-menu-toggle {
+            display: none;
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
         .search-box {
             margin-bottom: 1.5rem;
         }
-        
-        .search-box input {
+
+        .search-input {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            transition: all 0.2s;
         }
-        
-        .nav-title {
-            font-weight: 600;
-            color: var(--primary-color);
-            margin: 1.2rem 0 0.8rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent-color);
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
-        
-        .nav-item {
-            padding: 0.7rem 1rem;
-            margin: 0.3rem 0;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .nav-item:hover {
-            background-color: #f0f5ff;
-            color: var(--primary-color);
-        }
-        
-        .nav-item.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .content {
-            flex: 1;
-            background: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-        }
-        
-        .content-header {
+
+        .nav-section {
             margin-bottom: 1.5rem;
+        }
+
+        .nav-title {
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+            padding-left: 0.5rem;
+        }
+
+        .nav-item {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.25rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-subsection {
+            margin-left: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .nav-item:hover {
+            background: var(--bg-secondary);
+            transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .nav-icon {
+            font-size: 1.1rem;
+        }
+
+        /* Content Area */
+        .content {
+            background: var(--bg-primary);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-header {
+            border-bottom: 2px solid var(--bg-tertiary);
             padding-bottom: 1rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .content-header h2 {
-            color: var(--primary-color);
-            font-size: 1.8rem;
-        }
-        
-        .breadcrumb {
-            color: #777;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-        
-        .article {
             margin-bottom: 2rem;
         }
-        
-        .article-header {
+
+        .content-header h2 {
+            color: var(--primary-color);
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .breadcrumb {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            gap: 0.5rem;
         }
-        
+
+        .breadcrumb span {
+            color: var(--border-color);
+        }
+
+        /* Articles */
+        .article {
+            margin-bottom: 2.5rem;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .article-title {
-            font-size: 1.4rem;
-            color: var(--secondary-color);
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
-        
-        .article-content {
+
+        .article-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .article-text {
+            margin-bottom: 1rem;
             line-height: 1.8;
         }
-        
+
+        /* Accordion */
         .accordion {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
             margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 6px;
             overflow: hidden;
+            transition: all 0.3s;
         }
-        
+
+        .accordion:hover {
+            box-shadow: var(--shadow-md);
+        }
+
         .accordion-header {
-            padding: 1rem;
-            background-color: #f8f8f8;
+            padding: 1.25rem;
+            background: var(--bg-secondary);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
+            transition: all 0.2s;
+            user-select: none;
         }
-        
+
+        .accordion-header:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .accordion-header.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s;
+            font-size: 1.25rem;
+        }
+
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
         .accordion-content {
-            padding: 0;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
+            background: white;
         }
-        
+
         .accordion-content.active {
-            max-height: 1000px;
-            padding: 1rem;
+            max-height: 2000px;
         }
-        
-        .article-text {
-            margin-bottom: 1rem;
+
+        .accordion-inner {
+            padding: 1.25rem;
+            line-height: 1.8;
         }
-        
+
+        .accordion-inner ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .accordion-inner li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Concept Box */
         .concept-box {
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
             border-left: 4px solid var(--accent-color);
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 0 4px 4px 0;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
         }
-        
+
         .concept-title {
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
         }
-        
+
+        /* Tooltip */
         .tooltip {
             position: relative;
             display: inline-block;
-            border-bottom: 1px dotted var(--primary-color);
+            border-bottom: 2px dotted var(--primary-color);
             cursor: help;
+            font-weight: 600;
         }
-        
-        .tooltip .tooltiptext {
+
+        .tooltiptext {
             visibility: hidden;
-            width: 220px;
-            background-color: var(--dark-color);
-            color: #fff;
+            width: 250px;
+            background: var(--text-primary);
+            color: white;
             text-align: center;
-            border-radius: 6px;
-            padding: 8px;
+            border-radius: var(--radius);
+            padding: 0.75rem;
             position: absolute;
-            z-index: 1;
+            z-index: 10;
             bottom: 125%;
             left: 50%;
-            margin-left: -110px;
+            margin-left: -125px;
             opacity: 0;
             transition: opacity 0.3s;
-            font-size: 0.9rem;
-            line-height: 1.4;
+            font-size: 0.875rem;
+            font-weight: normal;
+            box-shadow: var(--shadow-lg);
         }
-        
+
+        .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--text-primary) transparent transparent transparent;
+        }
+
         .tooltip:hover .tooltiptext {
             visibility: visible;
             opacity: 1;
         }
-        
+
+        /* Quiz */
         .quiz-container {
-            background-color: #f0f8ff;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
         }
-        
+
         .quiz-question {
-            font-weight: 600;
-            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
         }
-        
-        .quiz-options {
-            margin-bottom: 1rem;
-        }
-        
+
         .quiz-option {
             display: block;
+            width: 100%;
+            text-align: left;
             margin: 0.5rem 0;
-            padding: 0.8rem;
+            padding: 1rem;
             background: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
+            font-size: 1rem;
         }
-        
+
         .quiz-option:hover {
-            background: #f0f5ff;
-        }
-        
-        .quiz-option.selected {
-            background-color: #e3f2fd;
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
             border-color: var(--primary-color);
         }
-        
+
+        .quiz-option.selected {
+            background: var(--bg-secondary);
+            border-color: var(--primary-color);
+            font-weight: 600;
+        }
+
         .quiz-option.correct {
-            background-color: #e8f5e9;
+            background: #dcfce7;
             border-color: var(--success-color);
+            animation: pulse 0.5s;
         }
-        
+
         .quiz-option.incorrect {
-            background-color: #ffebee;
-            border-color: #f44336;
+            background: #fee2e2;
+            border-color: var(--error-color);
+            animation: shake 0.5s;
         }
-        
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
         .quiz-feedback {
             font-weight: 600;
             margin-top: 1rem;
-            padding: 0.8rem;
-            border-radius: 4px;
+            padding: 1rem;
+            border-radius: var(--radius);
             display: none;
         }
-        
+
+        .quiz-feedback.show {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
         .quiz-feedback.correct {
-            background-color: #e8f5e9;
+            background: #dcfce7;
             color: var(--success-color);
-            display: block;
+            border: 2px solid var(--success-color);
         }
-        
+
         .quiz-feedback.incorrect {
-            background-color: #ffebee;
-            color: #f44336;
-            display: block;
+            background: #fee2e2;
+            color: var(--error-color);
+            border: 2px solid var(--error-color);
         }
-        
+
         .btn {
-            padding: 0.8rem 1.5rem;
-            background-color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: var(--radius);
             cursor: pointer;
             font-size: 1rem;
-            transition: background-color 0.2s ease;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-block;
         }
-        
+
         .btn:hover {
-            background-color: #2c5282;
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
-        
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Legal Reference Cards */
+        .legal-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s;
+        }
+
+        .legal-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .legal-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .legal-card-title {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .legal-card-number {
+            background: var(--bg-secondary);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
         footer {
-            background-color: var(--primary-color);
+            background: var(--text-primary);
             color: white;
             text-align: center;
             padding: 2rem 1rem;
-            margin-top: 2rem;
+            margin-top: auto;
         }
-        
-        @media (max-width: 900px) {
-            .container {
-                flex-direction: column;
+
+        footer p {
+            max-width: 800px;
+            margin: 0 auto 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
             }
-            
+
             .sidebar {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 1.5rem;
+                position: static;
+                margin-bottom: 1rem;
             }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .sidebar-content {
+                display: none;
+            }
+
+            .sidebar-content.active {
+                display: block;
+                animation: slideDown 0.3s ease;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    max-height: 0;
+                }
+                to {
+                    opacity: 1;
+                    max-height: 2000px;
+                }
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .tooltiptext {
+                width: 200px;
+                margin-left: -100px;
+            }
+
+            .article-title {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                padding: 1rem;
+            }
+
+            .quiz-container {
+                padding: 1.25rem;
+            }
+
+            .accordion-header,
+            .accordion-inner {
+                padding: 1rem;
+            }
+
+            .nav-subsection {
+                margin-left: 1rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header, .sidebar, footer, .quiz-container, .btn {
+                display: none;
+            }
+
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+
+        /* Section Display Control */
+        .section-content {
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo-container">
+        <div class="header-content">
             <div class="logo">⚖️</div>
-            <div>
+            <div class="header-text">
                 <h1>Derecho Cambiario Paraguayo</h1>
-                <p class="subtitle">Guía Interactiva del Código Civil - Libro 3 de los Contratos</p>
+                <p class="subtitle">Guía Interactiva Completa del Código Civil - Libro 3 de los Contratos</p>
             </div>
         </div>
     </header>
     
-    <div class="container">
-        <div class="sidebar">
-            <div class="search-box">
-                <input type="text" placeholder="Buscar artículo o concepto...">
+    <div class="main-container">
+        <aside class="sidebar">
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                ☰ Menú de Navegación
+            </button>
+            
+            <div class="sidebar-content" id="sidebarContent">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Buscar artículo o concepto..." id="searchInput">
+                </div>
+                
+                <nav>
+                    <div class="nav-section">
+                        <div class="nav-title">Introducción</div>
+                        <div class="nav-item active" data-section="introduccion">
+                            <span class="nav-icon">📚</span>
+                            Derecho Cambiario
+                        </div>
+                    </div>
+
+                    <div class="nav-section">
+                        <div class="nav-title">Letra de Cambio</div>
+                        <div class="nav-item" data-section="letra-emision">
+                            <span class="nav-icon">📝</span>
+                            Emisión y Forma
+                        </div>
+                        <div class="nav-item" data-section="letra-endoso">
+                            <span class="nav-icon">✍️</span>
+                            Endoso
+                        </div>
+                        <div class="nav-item" data-section="letra-aceptacion">
+                            <span class="nav-icon">✓</span>
+                            Aceptación
+                        </div>
+                        <div class="nav-item" data-section="letra-aval">
+                            <span class="nav-icon">🛡️</span>
+                            Aval
+                        </div>
+                        <div class="nav-item" data-section="letra-vencimiento">
+                            <span class="nav-icon">📅</span>
+                            Vencimiento
+                        </div>
+                        <div class="nav-item" data-section="letra-pagos">
+                            <span class="nav-icon">💰</span>
+                            Pagos
+                        </div>
+                        <div class="nav-item" data-section="letra-protesto">
+                            <span class="nav-icon">⚠️</span>
+                            Protesto
+                        </div>
+                    </div>
+                    
+                    <div class="nav-section">
+                        <div class="nav-title">Otros Títulos</div>
+                        <div class="nav-item" data-section="pagare">
+                            <span class="nav-icon">📋</span>
+                            Pagaré a la Orden
+                        </div>
+                        <div class="nav-item" data-section="cheque">
+                            <span class="nav-icon">💳</span>
+                            Cheque
+                        </div>
+                    </div>
+                    
+                    <div class="nav-section">
+                        <div class="nav-title">Instituciones</div>
+                        <div class="nav-item" data-section="fianza">
+                            <span class="nav-icon">🤝</span>
+                            Fianza
+                        </div>
+                        <div class="nav-item" data-section="promesas">
+                            <span class="nav-icon">✋</span>
+                            Promesas Unilaterales
+                        </div>
+                    </div>
+                    
+                    <div class="nav-section">
+                        <div class="nav-title">Evaluación</div>
+                        <div class="nav-item" data-section="quiz">
+                            <span class="nav-icon">✅</span>
+                            Test Completo
+                        </div>
+                    </div>
+                </nav>
             </div>
-            
-            <div class="nav-title">Títulos de Crédito</div>
-            <div class="nav-item active" data-section="letra-cambio">Letra de Cambio</div>
-            <div class="nav-item" data-section="pagare">Pagaré a la Orden</div>
-            <div class="nav-item" data-section="cheque">Cheque</div>
-            
-            <div class="nav-title">Instituciones Complementarias</div>
-            <div class="nav-item" data-section="fianza">Fianza</div>
-            <div class="nav-item" data-section="promesas">Promesas Unilaterales</div>
-            
-            <div class="nav-title">Evaluación</div>
-            <div class="nav-item" data-section="quiz">Test de Autoevaluación</div>
-        </div>
+        </aside>
         
-        <div class="content">
-            <div class="content-header">
-                <h2>Letra de Cambio</h2>
-                <div class="breadcrumb">Títulos de Crédito > Letra de Cambio</div>
-            </div>
-            
-            <div class="article">
-                <div class="article-header">
-                    <h3 class="article-title">Emisión y Forma (Arts. 1298–1310)</h3>
+        <main class="content" id="mainContent">
+            <!-- Introducción Section -->
+            <div id="introduccion" class="section-content active">
+                <div class="content-header">
+                    <h2>Derecho Cambiario</h2>
+                    <div class="breadcrumb">
+                        Introducción <span>›</span> Conceptos Generales
+                    </div>
                 </div>
                 
-                <div class="article-content">
-                    <p class="article-text">La letra de cambio es un título de crédito que, tradicionalmente, se considera "triangular" porque su perfección involucra a tres partes.</p>
+                <article class="article">
+                    <p class="article-text">
+                        El Derecho Cambiario se ocupa de los <strong>títulos de crédito</strong>, documentos fundamentales para el comercio y las finanzas. La emisión y circulación de estos títulos generan obligaciones denominadas <strong>cambiarias</strong>, las cuales pueden crear nuevas obligaciones o perfeccionar una existente.
+                    </p>
+                    
+                    <div class="concept-box">
+                        <div class="concept-title">⚡ Principios Fundamentales</div>
+                        <p>Los títulos de crédito se rigen por principios especiales que los distinguen de otros documentos:</p>
+                        <ul style="margin-top: 0.5rem;">
+                            <li><strong>Literalidad:</strong> El derecho se mide por lo escrito en el documento</li>
+                            <li><strong>Autonomía:</strong> Cada firma genera una obligación independiente</li>
+                            <li><strong>Incorporación:</strong> El derecho está incorporado al documento</li>
+                            <li><strong>Legitimación:</strong> El portador legítimo puede ejercer el derecho</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Letra de Cambio - Emisión y Forma -->
+            <div id="letra-emision" class="section-content">
+                <div class="content-header">
+                    <h2>Letra de Cambio - Emisión y Forma</h2>
+                    <div class="breadcrumb">
+                        Letra de Cambio <span>›</span> Emisión y Forma <span>›</span> Arts. 1298-1310
+                    </div>
+                </div>
+                
+                <article class="article">
+                    <h3 class="article-title">
+                        Requisitos y Formalidades
+                        <span class="article-badge">Arts. 1298-1310</span>
+                    </h3>
+                    
+                    <p class="article-text">
+                        La letra de cambio es un título de crédito que, tradicionalmente, se considera "triangular" porque su perfección involucra a tres partes: librador, girado y beneficiario.
+                    </p>
                     
                     <div class="accordion">
-                        <div class="accordion-header">
-                            <span>Normativa (Código Civil Paraguayo)</span>
-                            <span>+</span>
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>📚 Normativa del Código Civil Paraguayo</span>
+                            <span class="accordion-icon">▼</span>
                         </div>
                         <div class="accordion-content">
-                            <p>"Si una letra de cambio, <span class="tooltip">incompleta al tiempo de su emisión<span class="tooltiptext">Documento que carece de alguno de los requisitos esenciales al momento de ser creado</span></span>, ha sido completada contrariando los acuerdos que la determinaron, la inobservancia de ellos <strong>no puede oponerse al portador</strong>, a menos que éste la hubiere adquirido de mala fe o que al adquirirla hubiere incurrido en culpa grave."</p>
-                            <p>"El derecho del portador de llenar la letra de cambio en blanco, <strong>caduca a los tres años</strong> transcurridos desde el día de la emisión del título."</p>
-                            <p>"Esta caducidad no es oponible al portador de buena fe a quien el título le hubiere sido entregado ya completo."</p>
+                            <div class="accordion-inner">
+                                <p><strong>Letra incompleta:</strong> "Si una letra de cambio, <span class="tooltip">incompleta al tiempo de su emisión<span class="tooltiptext">Documento que carece de alguno de los requisitos esenciales al momento de ser creado</span></span>, ha sido completada contrariando los acuerdos que la determinaron, la inobservancia de ellos <strong>no puede oponerse al portador</strong>, a menos que éste la hubiere adquirido de mala fe o que al adquirirla hubiere incurrido en culpa grave."</p>
+                                
+                                <p style="margin-top: 1rem;"><strong>Plazo de caducidad:</strong> "El derecho del portador de llenar la letra de cambio en blanco, <strong>caduca a los tres años</strong> transcurridos desde el día de la emisión del título."</p>
+                                
+                                <p style="margin-top: 1rem;"><strong>Portador de buena fe:</strong> "Esta caducidad no es oponible al portador de buena fe a quien el título le hubiere sido entregado ya completo."</p>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="concept-box">
-                        <div class="concept-title">Conceptos clave y Doctrina (explicativa del Derecho Paraguayo):</div>
-                        <p>La <strong>formalidad</strong> es un elemento esencial en los títulos de crédito. La doctrina explica que un documento que no cumple con los requisitos y menciones señaladas por la ley <strong>no surtirá efectos de título de crédito</strong>, perdiendo su carácter ejecutivo y su privilegio procesal.</p>
-                        <p>La ausencia de un requisito legal no presumido por la ley produce la ineficacia del título. No obstante, la doctrina señala que la posibilidad de <strong>subsanar omisiones</strong> si el tenedor legítimo escribe los datos necesarios de acuerdo con el convenio de emisión ha sido admitida en la práctica jurídica.</p>
+                        <div class="concept-title">⚡ Conceptos Clave y Doctrina</div>
+                        <p>La <strong>formalidad</strong> es un elemento esencial. Un documento que no cumple con los requisitos legales <strong>no surtirá efectos de título de crédito</strong>, perdiendo su carácter ejecutivo. Los títulos son documentos formales, casi "sacramentales".</p>
+                        <p style="margin-top: 0.75rem;">La <strong>teoría de la convicción</strong> protege el texto del título considerando que, al firmar, el obligado contrajo la obligación con las condiciones precisadas en su texto.</p>
+                        <p style="margin-top: 0.75rem;">En la práctica, <strong>no se pueden estipular intereses ni cláusula penal</strong> en la letra de cambio; de lo contrario, se tendrán por no escritas.</p>
                     </div>
-                </div>
+                </article>
             </div>
-            
-            <div class="article">
-                <div class="article-header">
-                    <h3 class="article-title">Endoso (Arts. 1311–1321)</h3>
+
+            <!-- Letra de Cambio - Endoso -->
+            <div id="letra-endoso" class="section-content">
+                <div class="content-header">
+                    <h2>Letra de Cambio - Endoso</h2>
+                    <div class="breadcrumb">
+                        Letra de Cambio <span>›</span> Endoso <span>›</span> Arts. 1311-1321
+                    </div>
                 </div>
                 
-                <div class="article-content">
-                    <div class="accordion">
-                        <div class="accordion-header">
-                            <span>Art. 1.311 - Transferibilidad por endoso</span>
-                            <span>+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>La letra de cambio es <strong>transferible por endoso</strong>, incluso si no fue girada a la orden. Si el librador incluye "no a la orden" o equivalente, solo es transferible como <strong>cesión ordinaria</strong>. Puede endosarse a favor del girado, librador o cualquier otro obligado, quienes pueden reendosar.</p>
-                        </div>
-                    </div>
+                <article class="article">
+                    <h3 class="article-title">
+                        Transferencia por Endoso
+                        <span class="article-badge">Arts. 1311-1321</span>
+                    </h3>
                     
-                    <div class="accordion">
-                        <div class="accordion-header">
-                            <span>Art. 1.312 - Endoso puro y simple</span>
-                            <span>+</span>
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Transferibilidad</span>
+                            <span class="legal-card-number">Art. 1.311</span>
                         </div>
-                        <div class="accordion-content">
-                            <p>El endoso debe ser <strong>puro y simple</strong>; cualquier condición se tendrá por no escrita. El <strong>endoso parcial es nulo</strong>. Un endoso al portador vale como endoso en blanco.</p>
-                        </div>
+                        <p>La letra de cambio es <strong>transferible por endoso</strong>, incluso si no fue girada a la orden. Si el librador incluye "no a la orden", solo es transferible como <strong>cesión ordinaria</strong>.</p>
                     </div>
-                    
+
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Endoso puro y simple</span>
+                            <span class="legal-card-number">Art. 1.312</span>
+                        </div>
+                        <p>El endoso debe ser <strong>puro y simple</strong>; cualquier condición se tendrá por no escrita. El <strong>endoso parcial es nulo</strong>. Un endoso al portador vale como endoso en blanco.</p>
+                    </div>
+
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Forma del endoso</span>
+                            <span class="legal-card-number">Art. 1.313</span>
+                        </div>
+                        <p>Debe ser <strong>escrito en la letra o en hoja de prolongación y firmado</strong> por el endosante. Es válido aunque el beneficiario no sea designado o solo figure la firma al dorso.</p>
+                    </div>
+
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Efectos del endoso</span>
+                            <span class="legal-card-number">Art. 1.314</span>
+                        </div>
+                        <p>El endoso <strong>transfiere todos los derechos</strong> de la letra. Si es en blanco, el portador puede llenarlo con su nombre, endosar nuevamente, o entregar la letra sin llenarlo.</p>
+                    </div>
+
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Responsabilidad del endosante</span>
+                            <span class="legal-card-number">Art. 1.315</span>
+                        </div>
+                        <p>El endosante, salvo cláusula en contrario, <strong>responde de la aceptación y del pago</strong>. Puede prohibir un nuevo endoso, liberándose de responsabilidad frente a endosos posteriores.</p>
+                    </div>
+
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Legitimación del portador</span>
+                            <span class="legal-card-number">Art. 1.316</span>
+                        </div>
+                        <p>El tenedor es <strong>legítimo portador</strong> si justifica una sucesión ininterrumpida de endosos. Los endosos tachados se reputan no escritos.</p>
+                    </div>
+
                     <div class="concept-box">
-                        <div class="concept-title">Conceptos clave y Doctrina:</div>
-                        <p>El endoso es la forma tradicional de transmitir los créditos "a la orden". La doctrina destaca que el endoso debe ser <strong>puro y simple</strong>, y cualquier condición se tendrá por no escrita para preservar la eficacia del endoso.</p>
+                        <div class="concept-title">⚡ Doctrina sobre el Endoso</div>
+                        <p>El endoso es la forma tradicional de transmitir créditos "a la orden". Debe ser <strong>puro y simple</strong> para preservar su eficacia. La cadena de endosos crea una <strong>solidaridad cambiaria</strong> entre todos los firmantes.</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Letra de Cambio - Aceptación -->
+            <div id="letra-aceptacion" class="section-content">
+                <div class="content-header">
+                    <h2>Letra de Cambio - Aceptación</h2>
+                    <div class="breadcrumb">
+                        Letra de Cambio <span>›</span> Aceptación <span>›</span> Arts. 1322-1330
                     </div>
                 </div>
+                
+                <article class="article">
+                    <h3 class="article-title">
+                        Presentación y Aceptación
+                        <span class="article-badge">Arts. 1322-1330</span>
+                    </h3>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>📖 Presentación para aceptación (Art. 1.322)</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <p>La letra puede ser presentada por el portador o un simple tenedor para la <strong>aceptación por el girado</strong> en el domicilio indicado, hasta el día del vencimiento.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>📖 Disposiciones del librador (Art. 1.323)</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <p>El librador puede disponer la presentación para aceptación (con o sin plazo), o prohibirla (salvo letras pagaderas en domicilio de tercero o a plazo vista).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>📖 Letras a plazo vista (Art. 1.324)</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <p>Las letras a determinado plazo vista deben presentarse para la aceptación en el plazo de <strong>un año a partir de su fecha</strong>. El librador o endosantes pueden modificar este plazo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>📖 Forma de la aceptación (Art. 1.326)</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <p>La aceptación debe ser <strong>escrita en la letra, con la palabra "aceptada" o equivalente y firmada por el girado</strong>. La simple firma del girado en el anverso es aceptación.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>📖 Obligación del aceptante (Art. 1.329)</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <p>Por la aceptación, el girado se <strong>obliga a pagar la letra a su vencimiento</strong>. A falta de pago, el portador tiene <strong>acción directa</strong> contra el aceptante.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-box">
+                        <div class="concept-title">⚡ Consecuencias de la Falta de Aceptación</div>
+                        <p>Cuando una letra a cierto tiempo vista no se presenta para aceptación, se produce la <strong>caducidad de la acción cambiaria</strong> contra todos los obligados. El derecho nunca existió por falta de actos positivos necesarios del titular.</p>
+                    </div>
+                </article>
             </div>
-            
-            <div class="quiz-container">
-                <div class="quiz-question">¿Qué artículo del Código Civil Paraguayo establece que el endoso debe ser puro y simple?</div>
-                <div class="quiz-options">
-                    <div class="quiz-option" data-correct="false">Art. 1.311</div>
-                    <div class="quiz-option" data-correct="true">Art. 1.312</div>
-                    <div class="quiz-option" data-correct="false">Art. 1.313</div>
-                    <div class="quiz-option" data-correct="false">Art. 1.314</div>
+
+            <!-- Letra de Cambio - Aval -->
+            <div id="letra-aval" class="section-content">
+                <div class="content-header">
+                    <h2>Letra de Cambio - Aval</h2>
+                    <div class="breadcrumb">
+                        Letra de Cambio <span>›</span> Aval <span>›</span> Arts. 1331-1333
+                    </div>
                 </div>
-                <div class="quiz-feedback correct">¡Correcto! El Art. 1.312 establece que el endoso debe ser puro y simple.</div>
-                <div class="quiz-feedback incorrect">Incorrecto. La respuesta correcta es el Art. 1.312.</div>
-                <button class="btn" id="check-answer">Verificar respuesta</button>
+                
+                <article class="article">
+                    <h3 class="article-title">
+                        Garantía de Pago
+                        <span class="article-badge">Arts. 1331-1333</span>
+                    </h3>
+
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Concepto de Aval</span>
+                            <span class="legal-card-number">Art. 1.331</span>
+                        </div>
+                        <p>El pago de la letra de cambio puede ser garantizado por un <strong>aval</strong>, otorgado por un tercero o por cualquiera de los signatarios.</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <div class="concept-title">⚡ Doctrina sobre el Aval</div>
+                        <p>El aval es una <strong>garantía de pago</strong> de un título de crédito. La <strong>solidaridad cambiaria</strong> que resulta del aval es distinta de la civil:</p>
+                        <ul style="margin-top: 0.5rem;">
+                            <li>En la cambiaria, los solidarios lo son respecto de su propia deuda</li>
+                            <li>Quien paga la deuda cambiaria tiene derecho a exigir la totalidad a otros solidarios</li>
+                            <li>La firma del avalista debe constar como manifestación unilateral de voluntad</li>
+                        </ul>
+                    </div>
+                </article>
             </div>
-        </div>
+
+            <!-- Letra de Cambio - Vencimiento -->
+            <div id="letra-vencimiento" class="section-content">
+                <div class="content-header">
+                    <h2>Letra de Cambio - Vencimiento</h2>
+                    <div class="breadcrumb">
+                        Letra de Cambio <span>›</span> Vencimiento <span>›</span> Arts. 1334-1338
+                    </div>
+                </div>
+                
+                <article class="article">
+                    <h3 class="article-title">
+                        Modalidades de Vencimiento
+                        <span class="article-badge">Arts. 1334-1338</span>
+                    </h3>
+
+                    <div class="concept-box">
+                        <div class="concept-title">⚡ Tipos de Vencimiento</div>
+                        <p>La doctrina reconoce diferentes modalidades de vencimiento en los títulos de crédito:</p>
+                        <ul style="margin-top: 0.5rem;">
+                            <li><strong>A día fijo:</strong> Vence en la fecha indicada</li>
+                            <li><strong>A cierto plazo fecha:</strong> Vence transcurrido el plazo desde la emisión</li>
+                            <li><strong>A la vista:</strong> Vence al presentarse para el pago</li>
+                            <li><strong>A cierto plazo vista:</strong> Vence transcurrido el plazo desde la aceptación</li>
+                        </ul>
+                        <p style="margin-top: 0.75rem;">El incumplimiento de estos plazos puede llevar a la <strong>prescripción de la acción cambiaria</strong>.</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Letra de Cambio - Pagos -->
+            <div id="letra-pagos" class="section-content">
+                <div class="content-header">
+                    <h2>Letra de Cambio - Pagos</h2>
+                    <div class="breadcrumb">
+                        Letra de Cambio <span>›</span> Pagos <span>›</span> Arts. 1339-1344
+                    </div>
+                </div>
+                
+                <article class="article">
+                    <h3 class="article-title">
+                        Régimen de Pagos
+                        <span class="article-badge">Arts. 1339-1344</span>
+                    </h3>
+
+                    <div class="concept-box">
+                        <div class="concept-title">⚡ Principios del Pago Cambiario</div>
+                        <p>El pago con títulos de crédito se entiende hecho bajo la condición <strong>"salvo buen cobro"</strong>. Si el documento no es pagado, el acreedor puede retornar el título y exigir el pago original.</p>
+                        
+                        <p style="margin-top: 0.75rem;"><strong>Pagos parciales:</strong> El beneficiario está obligado a recibir pagos parciales. La cantidad pagada debe restarse textualmente del monto del documento (<strong>"quita"</strong>).</p>
+                        
+                        <p style="margin-top: 0.75rem;"><strong>Principio del nominalismo:</strong> El deudor debe entregar la misma suma pactada, sin importar la alteración del poder adquisitivo. Las partes pueden pactar <strong>cláusulas de estabilización</strong> con índices correctores.</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Letra de Cambio - Protesto -->
+            <div id="letra-protesto" class="section-content">
+                <div class="content-header">
+                    <h2>Letra de Cambio - Protesto</h2>
+                    <div class="breadcrumb">
+                        Letra de Cambio <span>›</span> Protesto <span>›</span> Arts. 1345-1367
+                    </div>
+                </div>
+                
+                <article class="article">
+                    <h3 class="article-title">
+                        Protesto y Acciones
+                        <span class="article-badge">Arts. 1345-1367</span>
+                    </h3>
+
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Aviso de falta de aceptación o pago</span>
+                            <span class="legal-card-number">Art. 1.349</span>
+                        </div>
+                        <p>El portador debe dar aviso al endosante y librador dentro de los <strong>cuatro días hábiles</strong> siguientes al protesto. La cláusula <strong>"sin protesto"</strong> dispensa del protesto pero no de la presentación.</p>
+                    </div>
+
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Solidaridad cambiaria</span>
+                            <span class="legal-card-number">Art. 1.350</span>
+                        </div>
+                        <p>Todos los que hayan girado, aceptado, endosado o avalado están <strong>solidariamente obligados</strong> hacia el portador. Se puede accionar contra todos individual o colectivamente.</p>
+                    </div>
+
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Caducidad de derechos</span>
+                            <span class="legal-card-number">Art. 1.356</span>
+                        </div>
+                        <p><strong>Caducan los derechos del portador</strong> contra endosantes, librador y demás obligados (excepto aceptante) después de expirar los plazos de presentación o protesto.</p>
+                    </div>
+
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Acción ejecutiva</span>
+                            <span class="legal-card-number">Art. 1.359</span>
+                        </div>
+                        <p>El portador de una letra debidamente protestada por falta de pago tiene <strong>acción ejecutiva</strong> por el importe del capital y los accesorios.</p>
+                    </div>
+
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Acción causal</span>
+                            <span class="legal-card-number">Art. 1.360</span>
+                        </div>
+                        <p>Si de la relación que dio causa a la emisión deriva una <strong>acción causal, esta subsiste</strong> salvo novación. No puede ejercerse sin protesto por falta de aceptación o pago.</p>
+                    </div>
+
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Enriquecimiento injusto</span>
+                            <span class="legal-card-number">Art. 1.361</span>
+                        </div>
+                        <p>Si el portador perdió la acción cambiaria y no tiene acción causal, puede accionar contra el librador o aceptante por <strong>enriquecimiento injustamente</strong> en su perjuicio.</p>
+                    </div>
+
+                    <div class="legal-card">
+                        <div class="legal-card-header">
+                            <span class="legal-card-title">Forma del protesto</span>
+                            <span class="legal-card-number">Art. 1.362</span>
+                        </div>
+                        <p>El protesto de las letras de cambio debe hacerse por <strong>escritura pública</strong>, dejándose constancia en el título bajo firma del escribano.</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <div class="concept-title">⚡ Importancia del Protesto</div>
+                        <p>El protesto es un acto formal que constata la falta de aceptación o pago. Es requisito para:</p>
+                        <ul style="margin-top: 0.5rem;">
+                            <li>Conservar la acción de regreso contra endosantes y librador</li>
+                            <li>Ejercer la acción ejecutiva</li>
+                            <li>Ejercer la acción causal</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Quiz Section -->
+            <div id="quiz" class="section-content">
+                <div class="content-header">
+                    <h2>Test de Autoevaluación</h2>
+                    <div class="breadcrumb">
+                        Evaluación <span>›</span> Test Completo
+                    </div>
+                </div>
+                
+                <div class="quiz-container">
+                    <div class="quiz-question">
+                        🎯 ¿Cuál es el plazo de caducidad para llenar una letra de cambio en blanco?
+                    </div>
+                    <div class="quiz-options" data-quiz="1">
+                        <button class="quiz-option" data-correct="false" onclick="selectOption(this, 1)">1 año</button>
+                        <button class="quiz-option" data-correct="false" onclick="selectOption(this, 1)">2 años</button>
+                        <button class="quiz-option" data-correct="true" onclick="selectOption(this, 1)">3 años</button>
+                        <button class="quiz-option" data-correct="false" onclick="selectOption(this, 1)">5 años</button>
+                    </div>
+                    <div class="quiz-feedback correct" id="feedback-correct-1">
+                        ✅ ¡Correcto! El plazo es de 3 años desde la emisión del título.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback-incorrect-1">
+                        ❌ Incorrecto. El plazo correcto es de 3 años desde la emisión.
+                    </div>
+                    <button class="btn" onclick="checkAnswer(1)">Verificar Respuesta</button>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="quiz-question">
+                        🎯 ¿Qué artículo establece que el endoso debe ser puro y simple?
+                    </div>
+                    <div class="quiz-options" data-quiz="2">
+                        <button class="quiz-option" data-correct="false" onclick="selectOption(this, 2)">Art. 1.311</button>
+                        <button class="quiz-option" data-correct="true" onclick="selectOption(this, 2)">Art. 1.312</button>
+                        <button class="quiz-option" data-correct="false" onclick="selectOption(this, 2)">Art. 1.313</button>
+                        <button class="quiz-option" data-correct="false" onclick="selectOption(this, 2)">Art. 1.314</button>
+                    </div>
+                    <div class="quiz-feedback correct" id="feedback-correct-2">
+                        ✅ ¡Correcto! El Art. 1.312 establece que el endoso debe ser puro y simple.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback-incorrect-2">
+                        ❌ Incorrecto. La respuesta correcta es el Art. 1.312.
+                    </div>
+                    <button class="btn" onclick="checkAnswer(2)">Verificar Respuesta</button>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="quiz-question">
+                        🎯 ¿Cuál es el plazo para dar aviso de falta de aceptación o pago?
+                    </div>
+                    <div class="quiz-options" data-quiz="3">
+                        <button class="quiz-option" data-correct="false" onclick="selectOption(this, 3)">2 días hábiles</button>
+                        <button class="quiz-option" data-correct="true" onclick="selectOption(this, 3)">4 días hábiles</button>
+                        <button class="quiz-option" data-correct="false" onclick="selectOption(this, 3)">5 días hábiles</button>
+                        <button class="quiz-option" data-correct="false" onclick="selectOption(this, 3)">7 días hábiles</button>
+                    </div>
+                    <div class="quiz-feedback correct" id="feedback-correct-3">
+                        ✅ ¡Correcto! El Art. 1.349 establece 4 días hábiles.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback-incorrect-3">
+                        ❌ Incorrecto. El plazo es de 4 días hábiles según el Art. 1.349.
+                    </div>
+                    <button class="btn" onclick="checkAnswer(3)">Verificar Respuesta</button>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="quiz-question">
+                        🎯 ¿Cómo debe hacerse el protesto de las letras de cambio?
+                    </div>
+                    <div class="quiz-options" data-quiz="4">
+                        <button class="quiz-option" data-correct="false" onclick="selectOption(this, 4)">Por acta notarial</button>
+                        <button class="quiz-option" data-correct="true" onclick="selectOption(this, 4)">Por escritura pública</button>
+                        <button class="quiz-option" data-correct="false" onclick="selectOption(this, 4)">Por documento privado</button>
+                        <button class="quiz-option" data-correct="false" onclick="selectOption(this, 4)">Por certificación bancaria</button>
+                    </div>
+                    <div class="quiz-feedback correct" id="feedback-correct-4">
+                        ✅ ¡Correcto! El Art. 1.362 establece que debe hacerse por escritura pública.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback-incorrect-4">
+                        ❌ Incorrecto. Debe hacerse por escritura pública (Art. 1.362).
+                    </div>
+                    <button class="btn" onclick="checkAnswer(4)">Verificar Respuesta</button>
+                </div>
+            </div>
+        </main>
     </div>
     
     <footer>
-        <p>Guía Interactiva del Derecho Cambiario Paraguayo - Basado en el Código Civil (Ley Nº 1.183/85)</p>
-        <p>© 2023 - Material educativo para fines académicos</p>
+        <p>📚 Guía Interactiva del Derecho Cambiario Paraguayo</p>
+        <p>Basado en el Código Civil (Ley Nº 1.183/85)</p>
+        <p>© 2024 - Material educativo para fines académicos</p>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Acordeones interactivos
-            const accordionHeaders = document.querySelectorAll('.accordion-header');
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const sidebarContent = document.getElementById('sidebarContent');
+            sidebarContent.classList.toggle('active');
+        }
+
+        // Accordion functionality
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const allHeaders = document.querySelectorAll('.accordion-header');
+            const allContents = document.querySelectorAll('.accordion-content');
             
-            accordionHeaders.forEach(header => {
-                header.addEventListener('click', function() {
-                    const content = this.nextElementSibling;
-                    const icon = this.querySelector('span:last-child');
-                    
-                    content.classList.toggle('active');
-                    icon.textContent = content.classList.contains('active') ? '-' : '+';
-                });
+            // Close other accordions
+            allHeaders.forEach(h => {
+                if (h !== header) h.classList.remove('active');
+            });
+            allContents.forEach(c => {
+                if (c !== content) c.classList.remove('active');
             });
             
-            // Navegación entre secciones
-            const navItems = document.querySelectorAll('.nav-item');
-            const contentHeader = document.querySelector('.content-header h2');
-            const breadcrumb = document.querySelector('.breadcrumb');
+            // Toggle current accordion
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+
+        // Navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Update active state
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Hide all sections
+                document.querySelectorAll('.section-content').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show selected section
+                const sectionId = this.getAttribute('data-section');
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+                
+                // Close mobile menu if open
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebarContent').classList.remove('active');
+                }
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // Quiz functionality
+        let selectedOptions = {};
+
+        function selectOption(option, quizNum) {
+            // Remove previous selection for this quiz
+            const quizContainer = option.parentElement;
+            quizContainer.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+            });
             
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    // Remover clase active de todos los items
-                    navItems.forEach(i => i.classList.remove('active'));
-                    
-                    // Agregar clase active al item seleccionado
-                    this.classList.add('active');
-                    
-                    // Cambiar contenido según la sección seleccionada
-                    const section = this.getAttribute('data-section');
-                    
-                    if (section === 'letra-cambio') {
-                        contentHeader.textContent = 'Letra de Cambio';
-                        breadcrumb.textContent = 'Títulos de Crédito > Letra de Cambio';
-                    } else if (section === 'pagare') {
-                        contentHeader.textContent = 'Pagaré a la Orden';
-                        breadcrumb.textContent = 'Títulos de Crédito > Pagaré a la Orden';
-                    } else if (section === 'cheque') {
-                        contentHeader.textContent = 'Cheque';
-                        breadcrumb.textContent = 'Títulos de Crédito > Cheque';
-                    } else if (section === 'quiz') {
-                        contentHeader.textContent = 'Test de Autoevaluación';
-                        breadcrumb.textContent = 'Evaluación > Test de Autoevaluación';
+            // Mark as selected
+            option.classList.add('selected');
+            selectedOptions[quizNum] = option;
+            
+            // Hide feedback
+            document.getElementById(`feedback-correct-${quizNum}`).classList.remove('show');
+            document.getElementById(`feedback-incorrect-${quizNum}`).classList.remove('show');
+        }
+
+        function checkAnswer(quizNum) {
+            const selectedOption = selectedOptions[quizNum];
+            
+            if (!selectedOption) {
+                alert('Por favor, selecciona una respuesta antes de verificar.');
+                return;
+            }
+            
+            const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+            
+            // Mark the selected option
+            if (isCorrect) {
+                selectedOption.classList.add('correct');
+                document.getElementById(`feedback-correct-${quizNum}`).classList.add('show');
+            } else {
+                selectedOption.classList.add('incorrect');
+                document.getElementById(`feedback-incorrect-${quizNum}`).classList.add('show');
+                
+                // Show correct answer
+                const quizContainer = selectedOption.parentElement;
+                quizContainer.querySelectorAll('.quiz-option').forEach(opt => {
+                    if (opt.getAttribute('data-correct') === 'true') {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            // Disable further selection for this quiz
+            const quizContainer = selectedOption.parentElement;
+            quizContainer.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.onclick = null;
+                opt.style.cursor = 'default';
+            });
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            if (searchTerm.length > 2) {
+                // Simple search highlighting
+                console.log('Searching for:', searchTerm);
+                
+                // You can implement highlighting of search terms in the content
+                // This is a placeholder for more advanced search functionality
+            }
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up smooth scrolling for any future internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                 });
             });
             
-            // Sistema de quizzes
-            const quizOptions = document.querySelectorAll('.quiz-option');
-            const checkAnswerBtn = document.getElementById('check-answer');
-            const correctFeedback = document.querySelector('.quiz-feedback.correct');
-            const incorrectFeedback = document.querySelector('.quiz-feedback.incorrect');
-            
-            quizOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    // Remover selección previa
-                    quizOptions.forEach(opt => opt.classList.remove('selected'));
-                    
-                    // Seleccionar esta opción
-                    this.classList.add('selected');
-                });
-            });
-            
-            checkAnswerBtn.addEventListener('click', function() {
-                const selectedOption = document.querySelector('.quiz-option.selected');
-                
-                if (!selectedOption) {
-                    alert('Por favor, selecciona una respuesta');
-                    return;
+            // Check for saved preferences
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.className = savedTheme;
+            }
+        });
+
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                if (window.innerWidth > 768) {
+                    document.getElementById('sidebarContent').classList.add('active');
                 }
-                
-                // Mostrar retroalimentación
-                if (selectedOption.getAttribute('data-correct') === 'true') {
-                    correctFeedback.style.display = 'block';
-                    incorrectFeedback.style.display = 'none';
-                    selectedOption.classList.add('correct');
-                } else {
-                    incorrectFeedback.style.display = 'block';
-                    correctFeedback.style.display = 'none';
-                    selectedOption.classList.add('incorrect');
-                    
-                    // Mostrar también la respuesta correcta
-                    document.querySelector('.quiz-option[data-correct="true"]').classList.add('correct');
-                }
-            });
+            }, 250);
         });
     </script>
 </body>
